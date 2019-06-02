@@ -1,0 +1,76 @@
+{% extends 'cms/base.html' %}
+
+{% block head %}
+    <script src="{% static 'js/comment_manage.js' %}"></script>
+{% endblock %}
+{% block content-header %}
+    <h1>评论管理</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-xs-4">评论文章</th>
+                    <th class="col-xs-2">评论内容</th>
+                    <th class="col-xs-2">发布时间</th>
+                    <th class="col-xs-1">评论作者</th>
+                    <th class="col-xs-1">操作</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for page_obj in page_objs %}
+                    <tr>
+                        <td>{{ page_obj.comment_news.title }}</td>
+                        <td>{{ page_obj.comment_content }}</td>
+                        <td>{{ page_obj.pub_time }}</td>
+                        <td>{{ page_obj.comment_author.username }}</td>
+                        <td><button class="btn btn-danger delete-btn btn-xs" data-pk="{{ page_obj.id }}">删除</button></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    <div class="footer">
+                    <ul class="pagination pull-right">
+                            {% if page_obj.has_previous %}
+                                <li>
+                                <a href="?p={{ page_obj.previous_page_number }}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                <a href="javascript:void(0);" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                </a>
+                                </li>
+                            {% endif %}
+                        <li class="disabled">
+                            <span class="current">
+                            第{{ current_page }}/{{ num_pages }}页
+                        </span>
+                        </li>
+
+                            {% if page_obj.has_next %}
+                                <li class="next">
+                                <a href="?p={{ page_obj.next_page_number }}"
+                                   aria-label="Next">&raquo;</a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                <a href="javascript:void(0);" aria-label="Next">&raquo;</a>
+                                </li>
+                            {% endif %}
+                    </ul>
+                </div>
+    </div>
+
+
+{% endblock %}

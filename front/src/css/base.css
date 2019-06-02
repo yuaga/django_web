@@ -1,0 +1,75 @@
+#login-box {
+    background: rgba(0,0,0,0.4)
+}
+
+#register-box{
+    background: rgba(0,0,0,0.4)
+}
+
+.login-modal{
+    margin: 10px 10px;
+    overflow: hidden
+}
+
+.login-close-btn{
+    float: right;cursor: pointer
+}
+
+.title{
+    text-align: center;
+    margin: 10px 10px;
+    font-size: 18px
+}
+
+.input-btn{
+    float: left;
+    width: 80px
+}
+
+.login-btn{
+    float: right;
+    width: 80px
+}
+
+.register-box{
+    margin: 10px 10px;
+    overflow: hidden
+}
+
+.edit-box{
+    margin: 10px 10px;
+    overflow: hidden
+}
+
+.register-close-btn{
+    float: right;
+    cursor: pointer
+}
+
+.edit-close-btn{
+    float: right;
+    cursor: pointer
+}
+
+.reset-btn{
+    float: left;
+    width: 80px
+}
+
+.register-btn{
+    float: right;
+    width: 80px
+}
+
+.edit-btn{
+    float: right;
+    width: 80px
+}
+
+.back_to_top{
+    position: fixed;
+    bottom:30px;
+    right: 30px;
+    border:1px solid #888;
+}
+

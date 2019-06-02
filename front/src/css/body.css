@@ -1,0 +1,19 @@
+body ,html{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /*background-image: url("http://uploadfile.bizhizu.cn/2014/0625/20140625025431409.jpg");*/
+}
+
+  div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, img {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }

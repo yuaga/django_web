@@ -1,0 +1,42 @@
+.comment-item {
+    margin-bottom: 20px;
+}
+
+.comment-item li {
+    border-top: 1px solid #f2f2f2;
+    margin-top: 20px;
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+.comment-title {
+    overflow: hidden;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+}
+
+.img {
+    float: left;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.pub-time {
+    margin-left: 20px;
+    float: right;
+}
+
+.author {
+    color: red;
+    margin-left: 20px;
+    float: left;
+}
+
+
+.comment-content {
+    float: left;
+    margin-left: 65px;
+}
+

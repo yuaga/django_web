@@ -1,0 +1,92 @@
+{% extends 'blog/base.html' %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+    <script id="comment-list" type="text/html">
+        {% verbatim %}
+        <li>
+            <div class="comment-title">
+
+                <img src="http://m.qpic.cn/psb?/V10gYWfM0gXuhS/9jEYS.i*PQrZw.0DpwVgyVHESJ79khFIq*nk9kDZEVY!/b/dLYAAAAAAAAA&bo=igGKAQAAAAADByI!&rf=viewer_4"
+                     alt="" class="img">
+
+                <span class="author">{{ comment.comment_author.username }}</span>
+                <span class="pub-time">{{ comment.pub_time|dateFormat }}</span>
+            </div>
+            <p class="comment-content">{{ comment.comment_content }}</p>
+        </li>
+        {% endverbatim %}
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+            <div class="container col-xs-2"></div>
+            <div class="container col-xs-8" style="height: 100%;">
+                <div class="content">
+                    <div class="news-title" style="text-align: center">
+                        <h3>{{ news.title }}</h3>
+                    </div>
+                    <div style="text-align:center;margin-bottom: 5px">
+                        <div>
+                            <span style="margin-right: 10px">{{ news.author.username }}</span>
+                            <span style="margin-left: 20px">{{ news.pub_time }}</span>
+{#                            <span class="glyphicon glyphicon-list glyphicon comments_num"></span>#}
+                            <span style="margin-left: 5px">评论：{{ news.comments_num }}</span>
+                        </div>
+
+                    </div>
+                    <div class="news-desc" style="margin-top: 30px">
+                        <article class="news-detail">
+                            {{ news.content|safe }}
+                        </article>
+                    </div>
+                    <div class="up-down-box" data-news-id="{{ news.id }}">
+                        <div class="up" data-up="1">
+                            <span class="glyphicon glyphicon-star up-up">点赞({{ news.up_num }})</span>
+                        </div>
+                        <div class="down" data-up="0">
+                            <span class="glyphicon glyphicon-star-empty">取消</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 80px;overflow: hidden">
+                    <div>
+                        <span>评论：</span>
+                        {% if user.is_authenticated %}
+                            <textarea class="form-control col-xs-4" rows="3" placeholder="文明留言！"
+                                      id="comment22"></textarea>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-primary" style="float: right;margin-top: 10px"
+                                        id="comment-submit-btn" data-news-id={{ news.id }}>提交评论
+                                </button>
+                            </div>
+                        {% else %}
+                            <textarea class="form-control col-xs-4" rows="3" placeholder="登录后才能留言！"></textarea>
+                        {% endif %}
+                </div>
+                <div>
+                    <ul class="comment-item">
+                        {#  下面的comments是模型中定义的related_name, 被定义外键的News模型，News的实列都可以通过news.comments获取当前模型的字段 #}
+                        {# 下面的for循环代码就是拿到Comment中的所有字段，news.comments是一个queryset对象，不能迭代，通过all就可以获取所有可迭代数据了，all后面不能加圆括号 #}
+                        {% for comment in news.comments.all %}
+                            <li>
+                                <div class="comment-title">
+
+                                    <img src="{% static "images/333.png" %}"
+                                         alt="" class="img">
+
+                                    <span class="author">{{ comment.comment_author.username }}</span>
+                                    <span class="pub-time">{{ comment.pub_time }}</span>
+                                </div>
+                                <p class="comment-content">{{ comment.comment_content }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="container col-xs-2"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'blog/base.html' %}
+{% block static %}
+    <script id="news-list1" type="text/html">
+        {% verbatim %}
+        {{ each newses news index }}
+        <li class="news-body">
+            <div class="col-xs-12">
+                <div>
+                    <h4 class="article-title">{{ news.title }}</h4>
+                </div>
+                <div class="user-time-box">
+                    <span class="time-box">{{ news.pub_time|dateFormat }}</span>
+                    <span style="margin-left:10px;">阅读数 {{ news.views }}</span>
+                </div>
+                <div class="article-desc">
+                    {{ news.intro }}...
+                </div>
+                <div class="up-down-box">
+                    <div class="up">
+                        <span class="glyphicon glyphicon-star">{{ news.up_num }}</span>
+                    </div>
+
+                    <div class="intro-box">
+                        <a href="/news/news_detail/{{ news.id }}">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{ /each }}
+        {% endverbatim %}
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div>
+        <ul class="news-list-group1">
+            {% for news in newses %}
+                <li class="news-body">
+                    <div class="col-xs-12">
+                        <div>
+                            <h4 class="article-title">{{ news.title }}</h4>
+                        </div>
+                        <div class="user-time-box">
+                            <span class="time-box">{{ news.pub_time }}</span>
+                            <span style="margin-left:10px;">阅读数 {{ news.views }}</span>
+                        </div>
+                        <div class="article-desc">
+                            {{ news.intro }}...
+                        </div>
+                        <div class="up-down-box">
+                            <div class="up">
+                                <span class="glyphicon glyphicon-star">{{ news.up_num }}</span>
+                            </div>
+
+                            <div class="intro-box">
+                                <a href="{% url 'news:news_detail' news.id %}">阅读更多</a>
+                            </div>
+                        </div>
+                        <div style="display: none;">
+                            <label>
+                                <input value="{{ news.category.id }}" name="category-name">
+                            </label>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div class="load-more-group">
+        <button class="load-more" id="load-more-btn1">
+            查看更多
+        </button>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'blog/sidebar.html' %}
+{% endblock %}

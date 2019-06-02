@@ -1,0 +1,67 @@
+.news-box {
+    overflow: hidden;
+}
+
+.news-body {
+    overflow: hidden;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.article-title {
+    font-size: 20px;
+    color: #9c3328;
+}
+
+.user-time-box {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.article-desc {
+    font-size: 18px;
+     font-style: italic;
+}
+
+.up-down-box {
+    margin-top: 15px
+}
+
+.up {
+    float: left;
+    width: 60px;
+    cursor: pointer;
+}
+
+.down {
+    float: left;
+    width: 60px;
+    cursor: pointer;
+}
+
+.comments_num{
+    margin-left: 15px
+}
+
+.intro-box {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+.load-more-group {
+    padding: 20px 0;
+    text-align: center
+}
+
+.load-more {
+    width: 280px;
+    height: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+
+
+
