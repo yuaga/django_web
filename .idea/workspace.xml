@@ -4,7 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/front/templates/cms/base.html" line="111" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3682d6ec-0666-4c73-a7d7-16ba94ccc034" name="Default Changelist" comment="" />
+    <list default="true" id="3682d6ec-0666-4c73-a7d7-16ba94ccc034" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,10 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/django_web/settings.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_web/example_settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1974">
+            <state relative-caret-position="192">
               <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
             </state>
           </provider>
@@ -94,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -201,7 +204,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="635" />
     <option name="y" value="5" />
     <option name="width" value="1285" />
@@ -314,12 +317,12 @@
       <workItem from="1559311997531" duration="1034000" />
       <workItem from="1559471376588" duration="798000" />
       <workItem from="1559478570670" duration="101000" />
-      <workItem from="1559478694590" duration="2596000" />
+      <workItem from="1559478694590" duration="4445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293933000" />
+    <option name="totallyTimeSpent" value="295782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -743,15 +746,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_web/settings.py">
+    <entry file="file://$PROJECT_DIR$/django_web/example_settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1974">
+        <state relative-caret-position="192">
           <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
