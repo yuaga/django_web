@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db.models import Count
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from apps.news.serializers import NewsListSerializer
 from utils import restful
 from django.views import View
@@ -8,17 +9,17 @@ from .models import User
 from apps.news.models import News, Category
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm, LoginForm, EditForm
+from apps.news.views import QuerySet
 
 
 def index(request):
     count = settings.ONE_PAGE_NEWS_COUNT
     newses = News.objects.annotate(news_num=Count('pub_time__month'), comments_num=Count('comments')).all()[0:count]
-    categories = Category.objects.annotate(news_count=Count('news')).all()
-    hot_newses = News.objects.order_by('-views')[0:5]
     return render(request, 'blog/index.html', context={
         "newses": newses,
-        "categories": categories,
-        "hot_newses": hot_newses,
+        'categories': QuerySet.categories,
+        'hot_newses': QuerySet.hot_newses,
+        'archives': QuerySet.archives
     })
 
 

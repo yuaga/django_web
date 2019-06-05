@@ -11,6 +11,12 @@ from .models import News, Comment, Category
 from .models import UpAndDown
 
 
+class QuerySet:
+    categories = Category.objects.annotate(news_count=Count('news'))
+    hot_newses = News.objects.order_by('-views')[0:5]
+    archives = News.objects.dates('pub_time', 'month', order='DESC').annotate(news_num=Count('id'))
+
+
 def news_detail(request, news_id):
     try:
         news = News.objects.select_related('author', 'category').prefetch_related('comments__comment_author', ).annotate(comments_num=Count('comments')).get(pk=news_id)
@@ -55,13 +61,11 @@ def news_category(request, category_id):
         raise Http404
     count = settings.ONE_PAGE_NEWS_COUNT
     newses = News.objects.select_related('category', 'author').annotate(news_num=Count('pub_time__month'), comments_num=Count('comments')).filter(category__id=category_id)[0:count]
-    categories = Category.objects.annotate(news_count=Count('news'))
-    hot_newses = News.objects.order_by('-views')[0:5]
     return render(request, 'news/news_category.html', context={
         'newses': newses,
-        'categories': categories,
-        'hot_newses': hot_newses
-
+        'categories': QuerySet.categories,
+        'hot_newses': QuerySet.hot_newses,
+        'archives': QuerySet.archives
     })
 
 
@@ -69,12 +73,11 @@ def archives(request, year, month):
     newses = News.objects.filter(pub_time__year=year,
                                  pub_time__month=month
                                  ).order_by('-pub_time').annotate(news_count=Count('id'))
-    categories = Category.objects.annotate(news_count=Count('news'))
-    hot_newses = News.objects.order_by('-views')[0:5]
     return render(request, 'blog/index.html', context={
         'newses': newses,
-        "categories": categories,
-        'hot_newses': hot_newses
+        'categories': QuerySet.categories,
+        'hot_newses': QuerySet.hot_newses,
+        'archives': QuerySet.archives
     })
 
 

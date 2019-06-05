@@ -1,43 +1,41 @@
-{% load blog_tags %}
 <div class="sidebar-box">
-        <div class="category-box">
-            <div class="category-title">
-                <span class="glyphicon glyphicon-tags"></span><span class="category-box1">分类：</span>
-            </div>
-            <div>
-                {% for category in categories %}
-                    <p class="category-tags">
-                        <a href="{% url 'news:news_category' category.id %}">{{ category.name }}({{ category.news_count }})</a>
-                    </p>
-                {% endfor %}
-            </div>
+    <div class="category-box">
+        <div class="category-title">
+            <span class="glyphicon glyphicon-tags"></span><span class="category-box1">分类：</span>
         </div>
-        <div class="widget widget-archives">
-            <span class="glyphicon glyphicon-th-large"></span><span class="widget-title">归档：</span>
-            {% archives as date_list %}
-            <ul>
-                {% for date in date_list %}
-                    <li class="date-box">
-                        <a href="{% url 'news:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month }}
-                            月</a>
-                    </li>
-                {% empty %}
-                    暂无归档！
-                {% endfor %}
-            </ul>
+        <div>
+            {% for category in categories %}
+                <p class="category-tags">
+                    <a href="{% url 'news:news_category' category.id %}">{{ category.name }}({{ category.news_count }})</a>
+                </p>
+            {% endfor %}
         </div>
+    </div>
+    <div class="widget widget-archives">
+        <span class="glyphicon glyphicon-th-large"></span><span class="widget-title">归档：</span>
+        <ul>
+            {% for date in archives %}
+                <li class="date-box">
+                    <a href="{% url 'news:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month }}
+                        月</a>
+                </li>
+            {% empty %}
+                暂无归档！
+            {% endfor %}
+        </ul>
+    </div>
 
-        <div class="hot-news-box">
-            <div>
-                <span class="glyphicon glyphicon-fire"></span><span class="hot-news">热门文章：</span>
-            </div>
-            <ul>
+    <div class="hot-news-box">
+        <div>
+            <span class="glyphicon glyphicon-fire"></span><span class="hot-news">热门文章：</span>
+        </div>
+        <ul>
             {% for hot_news in hot_newses %}
                 <li class="li-hot-news">
                     <a href="{% url 'news:news_detail' hot_news.id %}">{{ hot_news.title }}</a>
                     <p>阅读数：{{ hot_news.views }}</p>
                 </li>
             {% endfor %}
-            </ul>
-        </div>
+        </ul>
     </div>
+</div>
