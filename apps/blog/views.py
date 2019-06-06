@@ -56,7 +56,7 @@ class LoginView(View):
                         request.session.set_expiry(None)
                     else:
                         request.session.set_expiry(0)
-                        return restful.ok()
+                    return restful.ok()
                 else:
                     return restful.params_error(message='此账号被关进了小黑屋')
             else:
