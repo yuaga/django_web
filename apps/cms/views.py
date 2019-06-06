@@ -19,7 +19,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 @staff_member_required(login_url='index')
 def index(request):
-    return render(request, 'cms/base.html')
+    return render(request, 'cms/index.html')
 
 
 @require_GET

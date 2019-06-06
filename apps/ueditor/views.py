@@ -11,7 +11,8 @@ import os
 from urllib import parse
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import reverse
+from django.urls import reverse
+
 from django.views.decorators.csrf import csrf_exempt
 from django.http import FileResponse
 from django.views.generic import View

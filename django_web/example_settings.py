@@ -126,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_dist')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'front', 'src')
 ]
@@ -137,7 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 上传的文件目录位置
 # 富文本编辑器配置
 UEDITOR_UPLOAD_TO_SERVER = True
 UEDITOR_UPLOAD_PATH = MEDIA_ROOT
-UEDITOR_CONFIG_PATH = os.path.join(BASE_DIR, 'front', 'src', 'js', 'ueditor', 'config.json')
+UEDITOR_CONFIG_PATH = os.path.join(BASE_DIR, 'front', 'src', 'ueditor', 'config.json')
 
 # 一次加载多少篇文章参数。这个参数可以随便设置，只要是大小写。
 ONE_PAGE_NEWS_COUNT = 5
