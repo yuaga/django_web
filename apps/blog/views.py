@@ -9,17 +9,19 @@ from .models import User
 from apps.news.models import News, Category
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm, LoginForm, EditForm
-from apps.news.views import QuerySet
 
 
 def index(request):
     count = settings.ONE_PAGE_NEWS_COUNT
     newses = News.objects.annotate(news_num=Count('pub_time__month'), comments_num=Count('comments')).all()[0:count]
+    categories = Category.objects.annotate(news_count=Count('news'))
+    hot_newses = News.objects.order_by('-views')[0:5]
+    archives = News.objects.dates('pub_time', 'month', order='DESC').annotate(news_num=Count('id'))
     return render(request, 'blog/index.html', context={
         "newses": newses,
-        'categories': QuerySet.categories,
-        'hot_newses': QuerySet.hot_newses,
-        'archives': QuerySet.archives
+        'categories': categories,
+        'hot_newses': hot_newses,
+        'archives': archives
     })
 
 

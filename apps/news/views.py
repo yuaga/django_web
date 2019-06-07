@@ -1,6 +1,6 @@
 from django.conf import settings
-from django.db.models import Count, F
-from django.http import HttpResponse, Http404
+from django.db.models import Count
+from django.http import Http404
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from django.template.defaultfilters import escape
@@ -61,11 +61,14 @@ def news_category(request, category_id):
         raise Http404
     count = settings.ONE_PAGE_NEWS_COUNT
     newses = News.objects.select_related('category', 'author').annotate(news_num=Count('pub_time__month'), comments_num=Count('comments')).filter(category__id=category_id)[0:count]
+    categories = Category.objects.annotate(news_count=Count('news'))
+    hot_newses = News.objects.order_by('-views')[0:5]
+    archives = News.objects.dates('pub_time', 'month', order='DESC').annotate(news_num=Count('id'))
     return render(request, 'news/news_category.html', context={
         'newses': newses,
-        'categories': QuerySet.categories,
-        'hot_newses': QuerySet.hot_newses,
-        'archives': QuerySet.archives
+        'categories': categories,
+        'hot_newses': hot_newses,
+        'archives': archives
     })
 
 
@@ -73,11 +76,14 @@ def archives(request, year, month):
     newses = News.objects.filter(pub_time__year=year,
                                  pub_time__month=month
                                  ).order_by('-pub_time').annotate(news_count=Count('id'))
+    categories = Category.objects.annotate(news_count=Count('news'))
+    hot_newses = News.objects.order_by('-views')[0:5]
+    archives = News.objects.dates('pub_time', 'month', order='DESC').annotate(news_num=Count('id'))
     return render(request, 'blog/index.html', context={
         'newses': newses,
-        'categories': QuerySet.categories,
-        'hot_newses': QuerySet.hot_newses,
-        'archives': QuerySet.archives
+        'categories': categories,
+        'hot_newses': hot_newses,
+        'archives': archives
     })
 
 
